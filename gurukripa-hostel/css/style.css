@@ -1,0 +1,564 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-color: #0A2463;  /* Deep, professional blue */
+    --secondary-color: #3E92CC; /* Lighter, friendly blue */
+    --accent-color: #FFC43D;   /* Warm, inviting gold/yellow */
+    --text-color: #333333;      /* Dark grey for readability */
+    --light-bg-color: #F8F9FA;  /* Off-white for sections */
+    --white-color: #FFFFFF;
+}
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--white-color);
+}
+
+h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Header & Navigation --- */
+.main-header {
+    background-color: var(--primary-color); 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--white-color);
+    text-decoration: none;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-left: 25px;
+}
+
+.main-nav ul li a {
+    text-decoration: none;
+    color: var(--white-color); 
+    font-weight: 600;
+    padding-bottom: 5px;
+    position: relative;
+    transition: color 0.3s ease;
+    opacity: 0.85; 
+}
+
+.main-nav ul li a:hover,
+.main-nav ul li a.active {
+    color: var(--white-color);
+    opacity: 1;
+}
+
+.main-nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.main-nav ul li a:hover,
+.main-nav ul li a.active {
+    color: var(--secondary-color);
+}
+
+.main-nav ul li a:hover::after,
+.main-nav ul li a.active::after {
+    width: 100%;
+}
+
+
+/* --- Main Content --- */
+main {
+    padding: 4rem 0;
+}
+
+.gallery-intro {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.gallery-intro h1 {
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.gallery-intro p {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- Image Gallery (Home Page) --- */
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.gallery-item {
+    background: var(--white-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-item .item-info {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.gallery-item h3 {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.btn-book-now {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    padding: 12px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-book-now:hover {
+    background-color: #ffb700; /* Darker accent */
+    transform: scale(1.05);
+}
+
+/* --- About Us Page Content --- */
+.about-us-content {
+    max-width: 800px;
+    margin: 0 auto 4rem auto;
+    text-align: center;
+}
+
+.about-us-content h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.about-us-content p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+    line-height: 1.8;
+}
+
+.team-section {
+    text-align: center;
+}
+
+.team-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+}
+
+.team-members {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.team-member {
+    flex-basis: 300px;
+}
+
+.team-member img.bw-photo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    filter: grayscale(100%);
+    transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.team-member img.bw-photo:hover {
+    filter: grayscale(0%);
+    transform: scale(1.08);
+}
+
+.team-member h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.team-member p {
+    color: var(--secondary-color);
+    font-style: italic;
+}
+
+
+/* --- Footer --- */
+.main-footer {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 3rem 0;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.footer-links a {
+    color: var(--white-color);
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--accent-color);
+}
+
+.footer-social img {
+    opacity: 0.8;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.footer-social a {
+    margin: 0 8px;
+}
+
+.footer-social img:hover {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.footer-powered p {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+
+/* --- New Amenities Section --- */
+.amenities-section {
+    background-color: var(--light-bg-color);
+    padding: 4rem 0;
+    margin-top: 4rem;
+    text-align: center;
+}
+
+.amenities-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+}
+
+.amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    text-align: left;
+}
+
+.amenity-category {
+    background: var(--white-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.amenity-category h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+}
+
+.amenity-category h3 i {
+    font-size: 1.2rem;
+    margin-right: 10px;
+    color: var(--accent-color);
+}
+
+.amenity-category ul {
+    list-style: none;
+}
+
+.amenity-category ul li {
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+}
+
+.amenity-category ul li::before {
+    content: '\f00c'; 
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--accent-color);
+    margin-right: 10px;
+}
+
+/* --- New Contact CTA Section --- */
+.contact-cta {
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.contact-cta h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+.contact-cta p {
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.phone-number {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.phone-number:hover {
+    background-color: var(--secondary-color);
+    transform: scale(1.05);
+}
+
+.phone-number i {
+    margin-right: 10px;
+}
+
+/* --- Other minor additions --- */
+.gallery-intro h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+.video-btn {
+    background-color: var(--secondary-color);
+    margin-top: 1rem;
+}
+
+.video-btn:hover {
+    background-color: var(--primary-color);
+}
+
+.footer-contact {
+    text-align: left;
+}
+
+.footer-contact a {
+    color: var(--white-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+/* --- Booking Form Page --- */
+.booking-form-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 3rem;
+    background-color: var(--white-color);
+    border-radius: 8px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.booking-form-container h1 {
+    margin-bottom: 1rem;
+}
+
+.booking-form-container p {
+    margin-bottom: 2.5rem;
+    color: #666;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'Lato', sans-serif;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 5px rgba(62, 146, 204, 0.5);
+}
+
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 2rem;
+}
+
+.btn-submit:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+/* --- Pop-up Modal Styles --- */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--white-color);
+    padding: 3rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    z-index: 2000; 
+    transition: all 0.3s;
+}
+
+.modal-content h2 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    z-index: 1500; 
+    transition: all 0.3s;
+}
+
+.btn-close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    color: #aaa;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.btn-close-modal:hover {
+    color: #555;
+}
+
+/* This class is used by JavaScript to hide and show the elements */
+.hidden {
+    display: none;
+}
+
+/* --- Responsive Design --- */
+
+@media (max-width: 992px) {
+    .image-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .main-header .container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .main-nav ul {
+        padding: 0;
+    }
+
+    .image-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        flex-direction: column;
+    }
+}
