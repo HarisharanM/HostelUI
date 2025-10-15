@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Stay - Gurukripa Hostel</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">Gurukripa Hostel</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="book.html" class="active">Book Room</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="booking-form-container">
+                <h1>Book Your Stay 📝</h1>
+                <p>Fill out the form below to reserve your spot. We'll contact you shortly to confirm your booking.</p>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your 10-digit mobile number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="arrival-date">Preferred Arrival Date</label>
+                        <input type="date" id="arrival-date" name="arrival-date" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Submit Booking Request</button>
+                </form>
+            </div>
+        </div>
+    </main>
+                <div class="modal hidden" id="success-modal">
+                <div class="modal-content">
+                    <button class="btn-close-modal">&times;</button>
+                    <h2>Thanks for Booking! ✅</h2>
+                    <p>Your request was successful. We will contact you soon to confirm the details.</p>
+                </div>
+            </div>
+
+            <div class="modal hidden" id="fail-modal">
+                <div class="modal-content">
+                    <button class="btn-close-modal">&times;</button>
+                    <h2>Submission Failed ❌</h2>
+                    <p>Something went wrong. Please try again or contact us directly.</p>
+                </div>
+            </div>
+            <div class="overlay hidden"></div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-contact">
+                    <strong>Owner Contact:</strong><br>
+                    <a href="tel:7489488110">7489488110</a>
+                </div>
+                <div class="footer-links">
+                    <a href="about.html">About Us</a>
+                    <a href="book.html">Book Room</a>
+                    <a href="#">Gallery</a>
+                    <a href="#">Contact Us</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><img src="https://placehold.co/30x30/ffffff/000000?text=f" alt="Facebook"></a>
+                    <a href="#"><img src="https://placehold.co/30x30/ffffff/000000?text=i" alt="Instagram"></a>
+                    <a href="#"><img src="https://placehold.co/30x30/ffffff/000000?text=X" alt="Twitter/X"></a>
+                </div>
+                <div class="footer-powered">
+                    <p>Powered by Whitecircle Group</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+<script src="js/script.js"></script>
+</body>
+</html>
