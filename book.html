@@ -19,8 +19,8 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="book.html" class="active">Book Room</a></li>
-                    <li><a href="#">Gallery</a></li>
+                    <li><a href="book.html" class="active">Residency Form</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
                     <li><a href="#">Contact Us</a></li>
                 </ul>
             </nav>
@@ -34,6 +34,7 @@
                 <p>Please fill out all details carefully to apply for residency.</p>
                 
                 <form action="#" method="POST" enctype="multipart/form-data">
+                    
                     <fieldset>
                         <legend>👩‍💼 Personal Information</legend>
                         <div class="form-group">
@@ -77,8 +78,12 @@
                             <input type="text" id="college-address" name="college-address">
                         </div>
                         <div class="form-group">
-                            <label for="college-id-file">Upload College ID Card</label>
-                            <input type="file" id="college-id-file" name="college-id-file" accept="image/png, image/jpeg, .pdf" required>
+                            <label for="college-id-no">ID Card No.</label>
+                            <input type="text" id="college-id-no" name="college-id-no" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="college-id-no">Upload College ID Card (PDF, PNG, JPG)</label>
+                            <input type="file" id="college-id-no" name="college-id-no" accept=".pdf,.png,.jpg,.jpeg" required>
                         </div>
                     </fieldset>
 
@@ -104,6 +109,18 @@
                             <label for="mother-phone">Mother’s Contact No.</label>
                             <input type="tel" id="mother-phone" name="mother-phone">
                         </div>
+                        <div class="form-group">
+                            <label for="local-guardian-name">Local Guardian (if any)</label>
+                            <input type="text" id="local-guardian-name" name="local-guardian-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="local-guardian-contact">Local Guardian Contact</label>
+                            <input type="tel" id="local-guardian-contact" name="local-guardian-contact">
+                        </div>
+                        <div class="form-group">
+                            <label for="local-guardian-relation">Relationship with Guardian</label>
+                            <input type="text" id="local-guardian-relation" name="local-guardian-relation">
+                        </div>
                     </fieldset>
 
                     <fieldset>
@@ -119,6 +136,10 @@
                         <div class="form-group">
                             <label for="emergency-phone">Contact Number</label>
                             <input type="tel" id="emergency-phone" name="emergency-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="emergency-address">Address</label>
+                            <input type="text" id="emergency-address" name="emergency-address" required>
                         </div>
                     </fieldset>
 
@@ -139,24 +160,57 @@
                     </fieldset>
 
                     <fieldset>
-                        <legend>📷 Document Checklist</legend>
-                        <p>Please be ready to submit hard copies of the following:</p>
-                        <div class="checklist">
-                            <label><input type="checkbox" disabled checked> Aadhaar Card</label>
-                            <label><input type="checkbox" disabled checked> College ID Card</label>
-                            <label><input type="checkbox" disabled checked> Passport Size Photo</label>
-                            <label><input type="checkbox" disabled checked> Police Verification Form</label>
+                        <legend>📷 Document Checklist (Attach Copies)</legend>
+                        <p>All file uploads are required, except Police Verification. (PDF, PNG, or JPG only)</p>
+                        
+                        <div class="form-group">
+                            <label for="aadhaar-card">Aadhaar Card (Mandatory)</label>
+                            <input type="file" id="aadhaar-card" name="aadhaar-card" accept=".pdf,.png,.jpg,.jpeg" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="college-id-file">College ID Card (Mandatory)</label>
+                            <input type="file" id="college-id-file" name="college-id-file" accept=".pdf,.png,.jpg,.jpeg" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="passport-photo">Passport Size Photo (Mandatory)</label>
+                            <input type="file" id="passport-photo" name="passport-photo" accept=".png,.jpg,.jpeg" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="police-verification">Police Verification Form (Optional)</label>
+                            <input type="file" id="police-verification" name="police-verification" accept=".pdf,.png,.jpg,.jpeg">
                         </div>
                     </fieldset>
 
                     <fieldset>
                         <legend>📜 Rules & Agreement</legend>
                         <div class="agreement-text">
-                            <p>I hereby declare that the information provided is true and correct. I agree to abide by all hostel rules and regulations, maintain cleanliness and discipline, and respect others. I understand that any damage or misconduct may result in disciplinary action or termination of my stay, and I will be liable to pay for any damages caused. I agree to inform management 20-30 days in advance in case of early leave.</p>
+                            <p>I____hereby declare that:</p>
+                            <ol>
+                                <li>The information provided above is true and correct.</li>
+                                <li>I agree to abide by all hostel rules and regulations.</li>
+                                <li>I will maintain cleanliness, discipline, and respect for others.</li>
+                                <li>I understand that any damage or misconduct may result in disciplinary action or termination of my stay & i have to pay to cover up the damage.</li>
+                                <li>I agree to inform management in case of early leave or emergency 20-30 days before leaving.</li>
+                            </ol>
                         </div>
-                        <div class="form-group-agree">
-                            <input type="checkbox" id="agree" name="agree" required>
-                            <label for="agree">I have read and agree to the hostel rules and agreement.</label>
+                        <div class="form-group">
+                            <label for="signature-resident">Signature of Resident (Type your full name)</label>
+                            <input type="text" id="signature-resident" name="signature-resident" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signature-guardian">Signature of Guardian (Type full name)</label>
+                            <input type="text" id="signature-guardian" name="signature-guardian" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="agreement-date">Date</label>
+                            <input type="date" id="agreement-date" name="agreement-date" required>
+                        </div>
+                         <div class="form-group">
+                            <label>Authorized by (Hostel Management)</label>
+                            <input type="text" value="(To be signed by management)" readonly>
                         </div>
                     </fieldset>
 
@@ -193,8 +247,8 @@
                 </div>
                 <div class="footer-links">
                     <a href="about.html">About Us</a>
-                    <a href="book.html">Book Room</a>
-                    <a href="#">Gallery</a>
+                    <a href="book.html">Residency Form</a>
+                    <a href="reviews.html">Reviews</a>
                     <a href="#">Contact Us</a>
                 </div>
                 <div class="footer-social">

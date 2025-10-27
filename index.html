@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guru Kripa Girls Hostel, Jabalpur</title>
+    <title>Guru Kripa Girls Hostel</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,8 +19,8 @@
                 <ul>
                     <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="book.html">Book Room</a></li>
-                    <li><a href="#">Gallery</a></li>
+                    <li><a href="book.html">Residency Form</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
                     <li><a href="#">Contact Us</a></li>
                 </ul>
             </nav>
@@ -30,10 +30,11 @@
     <main>
         <section class="hero">
             <div class="container">
-                <h1>🏡 Guru Kripa Girls Hostel, Jabalpur</h1>
-                <h2>“Mai Aapka Swagat Hai” 🙏</h2>
+                <h1>🏡 Guru Kripa Girls Hostel</h1>
+                <h2 class="welcome-text">Mai Aapka Swagat Hai 🙏</h2>
                 
-                <img src="images/maharaj-ji.jpg" alt="Photo of Maharaj Ji" class="hero-image">
+                <img src="images/maharaj-ji.jpg" alt="Photo of Maharaj Ji" class="hero-image-square">
+                <p class="hero-subtext">Jai Shree Ram</p>
             </div>
         </section>
 
@@ -48,17 +49,15 @@
             <div class="container">
                 <h2><i class="fa-solid fa-bed"></i> Room Types</h2>
                 <div class="room-info">
-                    <h3>AC & Non-AC Rooms Available</h3>
                     <p>All rooms are spacious and offered on a **Double Sharing** basis only.</p>
                 </div>
             </div>
         </section>
-
+        
         <section class="amenities-section">
             <div class="container">
                 <h2><i class="fa-solid fa-shield-halved"></i> Facilities & Amenities</h2>
                 <div class="amenities-grid">
-                    
                     <div class="amenity-category">
                         <h3><i class="fa-solid fa-user-large"></i> Personal Amenities</h3>
                         <ul>
@@ -69,7 +68,6 @@
                             <li>Attached Washroom</li>
                         </ul>
                     </div>
-                    
                     <div class="amenity-category">
                         <h3><i class="fa-solid fa-users"></i> Common Facilities</h3>
                         <ul>
@@ -81,7 +79,6 @@
                             <li>High-Speed WiFi (Unlimited Data) 📶</li>
                         </ul>
                     </div>
-
                     <div class="amenity-category">
                         <h3><i class="fa-solid fa-utensils"></i> Mess Service</h3>
                         <ul>
@@ -92,7 +89,6 @@
                             <li>(Electricity bill is charged separately)</li>
                         </ul>
                     </div>
-
                     <div class="amenity-category">
                         <h3><i class="fa-solid fa-lock"></i> Safety & Security</h3>
                         <ul>
@@ -106,23 +102,52 @@
             </div>
         </section>
 
+        
+        <section class="pricing-section">
+            <div class="container">
+                <h2><i class="fa-solid fa-indian-rupee-sign"></i> Our Pricing</h2>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>Non-AC Room</h3>
+                        <div class="price">₹7000/-</div>
+                        <p>Per Month, Per Person</p>
+                        <ul>
+                            <li><i class="fa-solid fa-check"></i> Double Sharing</li>
+                            <li><i class="fa-solid fa-check"></i> Includes Mess Service</li>
+                            <li><i class="fa-solid fa-check"></i> Access to All Amenities</li>
+                        </ul>
+                        <a href="book.html" class="btn-book-now">Apply Now</a>
+                    </div>
+                    <div class="pricing-card accent-card">
+                        <h3>AC Room</h3>
+                        <div class="price">₹8000/-</div>
+                        <p>Per Month, Per Person</p>
+                        <ul>
+                            <li><i class="fa-solid fa-check"></i> Air Conditioned</li>
+                            <li><i class="fa-solid fa-check"></i> Double Sharing</li>
+                            <li><i class="fa-solid fa-check"></i> Includes Mess Service</li>
+                            <li><i class="fa-solid fa-check"></i> Access to All Amenities</li>
+                        </ul>
+                        <a href="book.html" class="btn-book-now">Apply Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="virtual-tour">
             <div class="container">
                 <h2><i class="fa-solid fa-video"></i> Virtual Tour</h2>
                 <p>Click the play button to see our hostel 👇</p>
-
                 <div class="video-container" id="video-container">
                     <video id="hostel-video" preload="metadata" playsinline>
                         <source src="videos/hostel-tour.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
-
                     <button class="play-pause-btn" id="play-pause-btn">
                         <i class="fa-solid fa-play"></i>
                     </button>
-
                     <a href="book.html" class="btn-book-now video-book-btn hidden" id="book-now-video-btn">
-                        Book a Room With Us
+                        Apply for Residency
                     </a>
                 </div>
             </div>
@@ -141,8 +166,8 @@
                 </div>
                 <div class="footer-links">
                     <a href="about.html">About Us</a>
-                    <a href="book.html">Book Room</a>
-                    <a href="#">Gallery</a>
+                    <a href="book.html">Residency Form</a>
+                    <a href="reviews.html">Reviews</a>
                     <a href="#">Contact Us</a>
                 </div>
                 <div class="footer-social">
@@ -156,6 +181,7 @@
             </div>
         </div>
     </footer>
+
     <script src="js/script.js"></script>
 </body>
 </html>

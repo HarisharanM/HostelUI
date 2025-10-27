@@ -1,18 +1,18 @@
 // Wait until the page content is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-
-    // --- BOOKING FORM LOGIC ---
-    // Find all the form elements
-    const bookingForm = document.querySelector('.booking-form-container form');
+    
+    // --- MODAL (POP-UP) LOGIC ---
+    // This logic is shared by both book.html and reviews.html
+    const form = document.querySelector('.booking-form-container form');
     const successModal = document.getElementById('success-modal');
     const failModal = document.getElementById('fail-modal');
     const overlay = document.querySelector('.overlay');
     const closeButtons = document.querySelectorAll('.btn-close-modal');
 
-    // This "if" check is important. It only runs the form code IF we are on the booking page.
-    if (bookingForm) {
-
-        // A function to close any open modal
+    // Check if we are on a page with a form and modals
+    if (form && successModal && overlay) {
+        
+        // Function to close any open modal
         const closeModal = function() {
             const openModal = document.querySelector('.modal:not(.hidden)');
             if (openModal) {
@@ -22,11 +22,10 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         // Listen for the form to be submitted
-        bookingForm.addEventListener('submit', function(event) {
+        form.addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent page reload
-
+            
             // For demonstration, we'll just show success.
-            // A real backend would determine if it's a success or fail.
             const isSuccess = true; 
 
             if (isSuccess) {
@@ -44,52 +43,74 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Also close the modal if the user clicks on the dark overlay
         overlay.addEventListener('click', closeModal);
-    } // End of booking form logic
+    } // End of modal form logic
 
 
-    // --- NEW VIDEO PLAYER LOGIC ---
-    // Find all the video elements
+    // --- VIDEO PLAYER LOGIC (for index.html) ---
     const videoContainer = document.getElementById('video-container');
-    const video = document.getElementById('hostel-video');
-    const playBtn = document.getElementById('play-pause-btn');
-    const bookBtn = document.getElementById('book-now-video-btn');
-
-    // This "if" check is important. It only runs the video code IF we are on the home page.
     if (videoContainer) {
+        const video = document.getElementById('hostel-video');
+        const playBtn = document.getElementById('play-pause-btn');
+        const bookBtn = document.getElementById('book-now-video-btn');
 
-        // 1. Play/Pause on button click
         playBtn.addEventListener('click', () => {
-            if (video.paused) {
-                video.play();
-            } else {
-                video.pause();
-            }
+            if (video.paused) video.play(); else video.pause();
         });
 
-        // 2. When video starts playing, hide the play button
         video.addEventListener('play', () => {
             videoContainer.classList.add('playing');
-            playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>'; // Change icon to pause
+            playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
         });
 
-        // 3. When video is paused, show the play button
         video.addEventListener('pause', () => {
             videoContainer.classList.remove('playing');
-            playBtn.innerHTML = '<i class="fa-solid fa-play"></i>'; // Change icon back to play
+            playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
         });
 
-        // 4. When the video ENDS, show the "Book Room" button
         video.addEventListener('ended', () => {
             bookBtn.classList.remove('hidden');
         });
 
-        // 5. If user clicks video to pause, also show play button
         video.addEventListener('click', () => {
-            if (!video.paused) {
-                video.pause();
-            }
+            if (!video.paused) video.pause();
         });
-
     } // End of video player logic
+
+
+    // --- STAR RATING LOGIC (for reviews.html) ---
+    const starWrapper = document.querySelector('.star-rating');
+    if (starWrapper) {
+        const stars = starWrapper.querySelectorAll('.fa-star');
+        const ratingInput = document.getElementById('rating');
+
+        // Function to set the star appearance
+        const setStars = (rating) => {
+            stars.forEach(star => {
+                if (star.dataset.value <= rating) {
+                    star.classList.add('selected');
+                } else {
+                    star.classList.remove('selected');
+                }
+            });
+        };
+
+        stars.forEach(star => {
+            // Fill stars on hover
+            star.addEventListener('mouseover', () => {
+                setStars(star.dataset.value);
+            });
+
+            // On mouse out, reset to the clicked rating
+            star.addEventListener('mouseleave', () => {
+                setStars(ratingInput.value);
+            });
+
+            // On click, set the rating value
+            star.addEventListener('click', () => {
+                ratingInput.value = star.dataset.value;
+                setStars(ratingInput.value);
+            });
+        });
+    } // End of star rating logic
 
 });
