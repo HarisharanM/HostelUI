@@ -639,19 +639,19 @@ legend {
 
 /* --- NEW: Review Form Styles --- */
 .star-rating {
-    direction: ltr; /* Ensure stars are left-to-right */
+    direction: ltr; 
     display: inline-block;
 }
 .star-rating i {
     font-size: 2rem;
-    color: #ccc;
+    color: #ccc; /* This makes them all gray by default */
     cursor: pointer;
     transition: color 0.2s ease;
     padding: 0 2px;
 }
 .star-rating i:hover,
 .star-rating i.selected {
-    color: var(--accent-color);
+    color: var(--accent-color); /* This makes them gold on hover/click */
 }
 
 /* --- Pop-up Modal Styles --- */
