@@ -481,16 +481,11 @@ section {
 .location-details a:hover {
     text-decoration: underline;
 }
-.map-placeholder {
+.location-section iframe {
     width: 100%;
     height: 400px;
-    background-color: #e0e0e0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #888;
-    font-size: 1.2rem;
     border-radius: 8px;
+    border: 0;
 }
 
 /* --- Booking Form Page --- */
