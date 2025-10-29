@@ -749,6 +749,72 @@ legend {
     opacity: 0.7;
 }
 
+/* --- NEW: Payment Page Styles --- */
+.payment-intro {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+}
+.payment-intro h1 {
+    color: var(--secondary-color);
+}
+.payment-intro p {
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 700px;
+    margin: 0.5rem auto 0 auto;
+}
+
+.payment-pricing {
+    padding-top: 2rem; /* Add some space above pricing cards */
+    background-color: transparent; /* Remove background if needed */
+}
+
+/* Make pricing cards slightly smaller on payment page */
+.payment-pricing .pricing-card {
+    padding: 2rem;
+}
+.payment-pricing .pricing-card.accent-card {
+    transform: scale(1); /* Don't scale the accent card here */
+}
+
+.payment-details-section {
+    text-align: center;
+    background-color: var(--light-bg-color);
+    padding: 3rem;
+    border-radius: 8px;
+    margin-top: 3rem;
+}
+.payment-qr-container {
+    max-width: 350px; /* Adjust size as needed */
+    margin: 1.5rem auto;
+    padding: 2rem;
+    background-color: var(--white-color);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.payment-qr-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 1.5rem;
+}
+.payment-info p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+.payment-info p strong {
+    color: #555;
+}
+.payment-note {
+    margin-top: 2rem;
+    color: #777;
+    font-style: italic;
+}
+
 /* --- Responsive Design --- */
 @media (max-width: 992px) {
     .amenities-grid {

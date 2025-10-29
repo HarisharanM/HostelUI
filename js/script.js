@@ -1,11 +1,8 @@
-// --- STEP 1: IMPORT FIREBASE MODULES ---
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
 import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
 
-// --- STEP 2: PASTE YOUR FIREBASE CONFIG HERE ---
-// PASTE YOUR REAL FIREBASE CONFIG OBJECT HERE
-const firebaseConfig = {
+const firebaseConfig = {  
   apiKey: "AIzaSyAFPzLksJDtKIdsiPUee-FXPpbGUdCGjRE",
   authDomain: "gurukripa-hostel-7f12b.firebaseapp.com",
   projectId: "gurukripa-hostel-7f12b",
@@ -15,13 +12,13 @@ const firebaseConfig = {
   measurementId: "G-FVQQR3EEYS"
 };
 
-// --- STEP 3: INITIALIZE FIREBASE ---
+const CLOUDINARY_CLOUD_NAME = "dzokzb1rj"; 
+const CLOUDINARY_UPLOAD_PRESET = "hostel-application"; 
+
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const storage = getStorage(app);
 
 
-// --- STEP 4: ALL YOUR PAGE LOGIC ---
 document.addEventListener('DOMContentLoaded', function() {
     
     // --- MODAL (POP-UP) LOGIC ---
@@ -42,12 +39,10 @@ document.addEventListener('DOMContentLoaded', function() {
         closeButtons.forEach(btn => btn.addEventListener('click', closeModal));
         overlay.addEventListener('click', closeModal);
 
-        // --- UPDATED FORM SUBMIT LOGIC ---
         form.addEventListener('submit', async function(event) {
             event.preventDefault(); 
             const submitButton = form.querySelector('button[type="submit"]');
             
-            // 1. If it's the REVIEW FORM
             if (form.closest('.review-form')) {
                 submitButton.disabled = true;
                 submitButton.textContent = "Submitting...";
@@ -67,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     successModal.classList.remove('hidden');
                     overlay.classList.remove('hidden');
                     form.reset();
-                    // Reset stars after successful submit
                     const starWrapper = document.querySelector('.star-rating');
                     if (starWrapper) {
                         starWrapper.querySelectorAll('.fa-star').forEach(s => s.classList.remove('selected'));
@@ -84,35 +78,46 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
 
-            // 2. If it's the RESIDENCY FORM (book.html)
             else if (form.id === 'residency-form') {
                 submitButton.disabled = true;
-                submitButton.textContent = "Submitting, please wait...";
+                submitButton.textContent = "Uploading files, please wait...";
 
                 try {
-                    const formData = new FormData(form);
+                    const uploadFile = async (fileInputId) => {
+                        const file = document.getElementById(fileInputId).files[0];
+                        if (!file) return null; 
+
+                        const formData = new FormData();
+                        formData.append('file', file);
+                        formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+
+                        const response = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/upload`, {
+                            method: 'POST',
+                            body: formData
+                        });
+
+                        const data = await response.json();
+                        if (data.secure_url) {
+                            return data.secure_url; 
+                        } else {
+                            throw new Error('File upload to Cloudinary failed.');
+                        }
+                    };
+
+                    const formElementData = new FormData(form);
                     const textData = {};
-                    formData.forEach((value, key) => {
+                    formElementData.forEach((value, key) => {
                         if (typeof value !== 'object') {
                             textData[key] = value;
                         }
                     });
 
-                    const uploadFile = async (fileInputId) => {
-                        const file = document.getElementById(fileInputId).files[0];
-                        if (!file) return null; 
-                        
-                        const filePath = `applications/${textData.name.replace(/\s+/g, '_')}_${fileInputId}_${Date.now()}_${file.name}`;
-                        const fileRef = ref(storage, filePath);
-                        await uploadBytes(fileRef, file);
-                        const url = await getDownloadURL(fileRef);
-                        return url;
-                    };
-
                     const aadhaarUrl = await uploadFile('aadhaar-card');
                     const collegeIdUrl = await uploadFile('college-id-file');
                     const photoUrl = await uploadFile('passport-photo');
                     const policeVerificationUrl = await uploadFile('police-verification');
+                    
+                    submitButton.textContent = "Saving application...";
 
                     const finalApplication = {
                         ...textData,
@@ -127,8 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     await addDoc(collection(db, "applications"), finalApplication);
                     
-                    successModal.classList.remove('hidden');
-                    overlay.classList.remove('hidden');
+                    window.location.href = 'payment.html';
                     form.reset();
 
                 } catch (error) {
@@ -144,58 +148,14 @@ document.addEventListener('DOMContentLoaded', function() {
     } // End of modal form logic
 
 
-    // --- VIDEO PLAYER LOGIC (for index.html) ---
     const videoContainer = document.getElementById('video-container');
     if (videoContainer) {
-        const video = document.getElementById('hostel-video');
-        const playBtn = document.getElementById('play-pause-btn');
-        const bookBtn = document.getElementById('book-now-video-btn');
-
-        playBtn.addEventListener('click', () => {
-            if (video.paused) video.play(); else video.pause();
-        });
-        video.addEventListener('play', () => {
-            videoContainer.classList.add('playing');
-            playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
-        });
-        video.addEventListener('pause', () => {
-            videoContainer.classList.remove('playing');
-            playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
-        });
-        video.addEventListener('ended', () => {
-            bookBtn.classList.remove('hidden');
-        });
-        video.addEventListener('click', () => {
-            if (!video.paused) video.pause();
-        });
-    } // End of video player logic
+       
+    } 
 
 
-    // --- STAR RATING LOGIC (for reviews.html) ---
-    // This is the code that makes the stars work
     const starWrapper = document.querySelector('.star-rating');
     if (starWrapper) {
-        const stars = starWrapper.querySelectorAll('.fa-star');
-        const ratingInput = document.getElementById('rating');
-
-        const setStars = (rating) => {
-            stars.forEach(star => {
-                if (star.dataset.value <= rating) {
-                    star.classList.add('selected');
-                } else {
-                    star.classList.remove('selected');
-                }
-            });
-        };
-        
-        stars.forEach(star => {
-            star.addEventListener('mouseover', () => setStars(star.dataset.value));
-            star.addEventListener('mouseleave', () => setStars(ratingInput.value));
-            star.addEventListener('click', () => {
-                ratingInput.value = star.dataset.value;
-                setStars(ratingInput.value);
-            });
-        });
-    } // End of star rating logic
+    } 
 
 });
