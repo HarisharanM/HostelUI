@@ -1,14 +1,13 @@
 /* --- Global Styles & Variables --- */
 :root {
-    --primary-color: #0A2463;  /* Deep, professional blue */
-    --secondary-color: #3E92CC; /* Lighter, friendly blue */
-    --accent-color: #FFC43D;   /* Warm, inviting gold/yellow */
-    --text-color: #333333;      /* Dark grey for readability */
-    --light-bg-color: #F8F9FA;  /* Off-white for sections */
+    --primary-color: #0A2463;  
+    --secondary-color: #3E92CC; 
+    --accent-color: #FFC43D;  
+    --text-color: #333333;  
+    --light-bg-color: #F8F9FA;  
     --white-color: #FFFFFF;
 }
 
-/* Basic Reset */
 * {
     margin: 0;
     padding: 0;
@@ -133,8 +132,8 @@ section {
 .hero-image-square {
     width: 250px;
     height: 250px;
-    object-fit: cover; /* Prevents image from stretching */
-    border-radius: 8px; /* Slightly rounded corners */
+    object-fit: cover; 
+    border-radius: 8px; 
     border: 5px solid var(--accent-color);
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
 }
@@ -310,7 +309,7 @@ section {
     font-size: 1.05rem;
 }
 .amenity-category ul li::before {
-    content: '\f00c'; /* Font Awesome check icon */
+    content: '\f00c'; 
     font-family: 'Font Awesome 6 Free';
     font-weight: 900;
     color: var(--accent-color);
@@ -340,7 +339,7 @@ section {
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     width: 100%; 
-    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    padding-top: 56.25%; 
     background-color: #000;
 }
 .video-container video {
@@ -429,7 +428,7 @@ section {
     display: flex;
     justify-content: center;
     gap: 2rem;
-    flex-wrap: wrap; /* Allows stacking on small screens */
+    flex-wrap: wrap; 
     margin-top: 2rem;
 }
 .team-member {
@@ -535,24 +534,46 @@ legend {
 .form-group input[type="email"],
 .form-group input[type="tel"],
 .form-group input[type="date"],
-.form-group textarea {
+.form-group textarea, 
+.form-group select {
     width: 100%;
     padding: 12px 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
     font-family: 'Lato', sans-serif;
+    background-color: var(--white-color); 
 }
+
 .form-group input[readonly] {
     background-color: #eee;
     cursor: not-allowed;
 }
+
 .form-group input:focus,
-.form-group textarea:focus {
+.form-group textarea:focus,
+.form-group select:focus { 
     outline: none;
     border-color: var(--secondary-color);
     box-shadow: 0 0 5px rgba(62, 146, 204, 0.5);
 }
+
+.form-group input:invalid,
+.form-group textarea:invalid,
+.form-group select:invalid {
+    border-color: #dc3545; 
+}
+.form-group select {
+  -webkit-appearance: none; 
+  -moz-appearance: none; 
+  appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 0.65em auto;
+  padding-right: 2.5rem; 
+}
+
 .form-group input[type="file"] {
     padding: 0;
     border: none;
@@ -639,14 +660,14 @@ legend {
 }
 .star-rating i {
     font-size: 2rem;
-    color: #ccc; /* This makes them all gray by default */
+    color: #ccc; 
     cursor: pointer;
     transition: color 0.2s ease;
     padding: 0 2px;
 }
 .star-rating i:hover,
 .star-rating i.selected {
-    color: var(--accent-color); /* This makes them gold on hover/click */
+    color: var(--accent-color); 
 }
 
 /* --- Pop-up Modal Styles --- */
@@ -767,16 +788,15 @@ legend {
 }
 
 .payment-pricing {
-    padding-top: 2rem; /* Add some space above pricing cards */
-    background-color: transparent; /* Remove background if needed */
+    padding-top: 2rem; 
+    background-color: transparent;
 }
 
-/* Make pricing cards slightly smaller on payment page */
 .payment-pricing .pricing-card {
     padding: 2rem;
 }
 .payment-pricing .pricing-card.accent-card {
-    transform: scale(1); /* Don't scale the accent card here */
+    transform: scale(1); 
 }
 
 .payment-details-section {
@@ -787,7 +807,7 @@ legend {
     margin-top: 3rem;
 }
 .payment-qr-container {
-    max-width: 350px; /* Adjust size as needed */
+    max-width: 350px; 
     margin: 1.5rem auto;
     padding: 2rem;
     background-color: var(--white-color);
@@ -824,7 +844,7 @@ legend {
         grid-template-columns: 1fr;
     }
     .pricing-card.accent-card {
-        transform: scale(1); /* Don't scale on mobile */
+        transform: scale(1); 
     }
 }
 

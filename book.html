@@ -34,16 +34,16 @@
                 <p>Please fill out all details carefully to apply for residency.</p>
                 
                 <form action="#" method="POST" enctype="multipart/form-data" id="residency-form">
-                    
+
                     <fieldset>
                         <legend>👩‍💼 Personal Information</legend>
                         <div class="form-group">
                             <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" id="name" name="name" required pattern="[A-Za-z\s]+" title="Please enter only letters and spaces.">
                         </div>
                         <div class="form-group">
                             <label for="phone">Mobile Number</label>
-                            <input type="tel" id="phone" name="phone" required>
+                            <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" maxlength="10" title="Please enter exactly 10 digits.">
                         </div>
                         <div class="form-group">
                             <label for="email">Email ID</label>
@@ -55,7 +55,7 @@
                         </div>
                         <div class="form-group">
                             <label for="city">City</label>
-                            <input type="text" id="city" name="city" required>
+                            <input type="text" id="city" name="city" required pattern="[A-Za-z\s]+" title="Please enter Valid City name only.">
                         </div>
                     </fieldset>
                     
@@ -81,17 +81,13 @@
                             <label for="college-id-no">ID Card No.</label>
                             <input type="text" id="college-id-no" name="college-id-no" required>
                         </div>
-                        <div class="form-group">
-                            <label for="college-id-no">Upload College ID Card (PDF, PNG, JPG)</label>
-                            <input type="file" id="college-id-no" name="college-id-no" accept=".pdf,.png,.jpg,.jpeg" required>
-                        </div>
                     </fieldset>
 
                     <fieldset>
                         <legend>👨‍👩‍👧 Parent / Guardian Details</legend>
                         <div class="form-group">
                             <label for="father-name">Father’s Name</label>
-                            <input type="text" id="father-name" name="father-name" required>
+                            <input type="text" id="father-name" name="father-name" required pattern="[A-Za-z\s]+" title="Please enter only letters and spaces.">
                         </div>
                         <div class="form-group">
                             <label for="father-job">Father’s Occupation</label>
@@ -99,27 +95,38 @@
                         </div>
                         <div class="form-group">
                             <label for="father-phone">Father’s Contact No.</label>
-                            <input type="tel" id="father-phone" name="father-phone" required>
+                            <input type="tel" id="father-phone" name="father-phone" required pattern="[0-9]{10}" maxlength="10" title="Please enter exactly 10 digits.">
                         </div>
                         <div class="form-group">
                             <label for="mother-name">Mother’s Name</label>
-                            <input type="text" id="mother-name" name="mother-name" required>
+                            <input type="text" id="mother-name" name="mother-name" required pattern="[A-Za-z\s]+" title="Please enter only letters and spaces.">
                         </div>
                         <div class="form-group">
                             <label for="mother-phone">Mother’s Contact No.</label>
-                            <input type="tel" id="mother-phone" name="mother-phone">
+                            <input type="tel" id="mother-phone" name="mother-phone" pattern="[0-9]{10}" maxlength="10" title="Please enter exactly 10 digits (if applicable).">
                         </div>
                         <div class="form-group">
                             <label for="local-guardian-name">Local Guardian (if any)</label>
-                            <input type="text" id="local-guardian-name" name="local-guardian-name">
+                            <input type="text" id="local-guardian-name" name="local-guardian-name" pattern="[A-Za-z\s]+" title="Please enter only letters and spaces (if applicable).">
                         </div>
                         <div class="form-group">
                             <label for="local-guardian-contact">Local Guardian Contact</label>
-                            <input type="tel" id="local-guardian-contact" name="local-guardian-contact">
+                            <input type="tel" id="local-guardian-contact" name="local-guardian-contact" pattern="[0-9]{10}" maxlength="10" title="Please enter exactly 10 digits (if applicable).">
                         </div>
                         <div class="form-group">
                             <label for="local-guardian-relation">Relationship with Guardian</label>
-                            <input type="text" id="local-guardian-relation" name="local-guardian-relation">
+                            <select id="local-guardian-relation" name="local-guardian-relation">
+                                <option value="">-- Select Relationship --</option>
+                                <option value="Father">Father</option>
+                                <option value="Mother">Mother</option>
+                                <option value="Sister">Sister</option>
+                                <option value="Brother">Brother</option>
+                                <option value="Uncle">Uncle</option>
+                                <option value="Aunt">Aunt</option>
+                                <option value="Grandfather">Grandfather</option>
+                                <option value="Grandmother">Grandmother</option>
+                                <option value="Other">Other</option>
+                            </select>
                         </div>
                     </fieldset>
 
@@ -127,15 +134,28 @@
                         <legend>🚨 Emergency Contact Details</legend>
                         <div class="form-group">
                             <label for="emergency-name">Name</label>
-                            <input type="text" id="emergency-name" name="emergency-name" required>
+                            <input type="text" id="emergency-name" name="emergency-name" required pattern="[A-Za-z\s]+" title="Please enter only letters and spaces.">
                         </div>
                         <div class="form-group">
                             <label for="emergency-relation">Relationship</label>
-                            <input type="text" id="emergency-relation" name="emergency-relation" required>
+                            <select id="emergency-relation" name="emergency-relation" required>
+                                <option value="">-- Select Relationship --</option>
+                                <option value="Father">Father</option>
+                                <option value="Mother">Mother</option>
+                                <option value="Sister">Sister</option>
+                                <option value="Brother">Brother</option>
+                                <option value="Uncle">Uncle</option>
+                                <option value="Aunt">Aunt</option>
+                                <option value="Grandfather">Grandfather</option>
+                                <option value="Grandmother">Grandmother</option>
+                                <option value="Spouse">Spouse</option>
+                                <option value="Friend">Friend</option>
+                                <option value="Other">Other</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="emergency-phone">Contact Number</label>
-                            <input type="tel" id="emergency-phone" name="emergency-phone" required>
+                            <input type="tel" id="emergency-phone" name="emergency-phone" required pattern="[0-9]{10}" maxlength="10" title="Please enter exactly 10 digits.">
                         </div>
                         <div class="form-group">
                             <label for="emergency-address">Address</label>
@@ -148,6 +168,10 @@
                         <div class="form-group">
                             <label>Room Type</label>
                             <input type="text" value="Double Sharing Only" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Room No.</label>
+                            <input type="text" value="(To be filled by management)" readonly>
                         </div>
                         <div class="form-group">
                             <label for="check-in">Check-in Date</label>
@@ -187,7 +211,7 @@
                     <fieldset>
                         <legend>📜 Rules & Agreement</legend>
                         <div class="agreement-text">
-                            <p>I____hereby declare that:</p>
+                            <p>I, ______________________________________, hereby declare that:</p>
                             <ol>
                                 <li>The information provided above is true and correct.</li>
                                 <li>I agree to abide by all hostel rules and regulations.</li>
@@ -198,15 +222,15 @@
                         </div>
                         <div class="form-group">
                             <label for="signature-resident">Signature of Resident (Type your full name)</label>
-                            <input type="text" id="signature-resident" name="signature-resident" required>
+                            <input type="text" id="signature-resident" name="signature-resident" required pattern="[A-Za-z\s]+" title="Please type your full legal name.">
                         </div>
                         <div class="form-group">
                             <label for="signature-guardian">Signature of Guardian (Type full name)</label>
-                            <input type="text" id="signature-guardian" name="signature-guardian" required>
+                            <input type="text" id="signature-guardian" name="signature-guardian" required pattern="[A-Za-z\s]+" title="Please type the guardian's full legal name.">
                         </div>
                         <div class="form-group">
                             <label for="agreement-date">Date</label>
-                            <input type="date" id="agreement-date" name="agreement-date" required>
+                            <input type="date" id="agreement-date" name="agreement-date" readonly>
                         </div>
                          <div class="form-group">
                             <label>Authorized by (Hostel Management)</label>
@@ -262,6 +286,7 @@
             </div>
         </div>
     </footer>
+
     <script type="module" src="js/script.js"></script>
 </body>
 </html>
